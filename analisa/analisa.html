@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>analisa</title>
+    <link rel="stylesheet" href="../style/admin.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo"></div>
+      <ul class="menu">
+        <li >
+          <a href="admin.html">
+            <i class="bx bxs-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="tiket/tiket.html">
+            <i class='bx bxs-calendar-plus'></i>
+            <span>Manajemen Tiket</span>
+          </a>
+        </li>
+        <li>
+          <a href="input.html">
+            <i class='bx bx-archive-in' ></i>
+            <span>Input Data</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="analisa.html">
+            <i class='bx bx-bar-chart-square'></i>
+            <span>Analisis</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bx bxs-log-out"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="header-wrapper">
+        <div class="header-title">
+          <span>Analisa Kepuasan</span>
+          <span>Dashboard</span>
+        </div>
+        <div class="user-info">
+          <div class="search">
+            <i class="bx bx-search-alt"></i>
+            <input type="text" placeholder="Search" />
+          </div>
+          <img src="../image/rating.png" alt="" />
+        </div>
+      </div>
+      
+      
+      <div class="tabel-wrapper">
+        <h3 class="main-title">Analisa Kepuasan</h3>
+        <div class="button-container">
+          <button class="move-button" onclick="window.location.href='nama_page_lain.html'">Input Data</button>
+        </div>
+        <div class="tabel-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID Tiket</th>
+                <th>Pemesan</th>
+                <th>Sektor</th>
+                <th>Skor Kepuasan</th>
+                <th>Skor Customer Effort</th>
+                <th>Status</th>
+                <th>Opsi</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>ikhsan Gofur</td>
+                  <td>Sektor A</td>
+                  <td>85</td>
+                  <td>79</td>
+                  <td>
+                    <span class="status status-pending">Pending</span>
+                  </td>
+                  <td>
+                    <div class="button-container">
+                      <button class="edit-button">Edit</button>
+                      <button class="remove-button">Remove</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Fani Dasil</td>
+                  <td>3</td>
+                  <td>85</td>
+                  <td>79</td>
+                  <td>
+                    <span class="status status-pending">Pending</span>
+                  </td>
+                  <td>
+                    <div class="button-container">
+                      <button class="edit-button">Edit</button>
+                      <button class="remove-button">Remove</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>MR. WHY</td>
+                  <td>Sektor C</td>
+                  <td>85</td>
+                  <td>79</td>
+                  <td>
+                    <span class="status status-pending">Pending</span>
+                  </td>
+                  <td>
+                    <div class="button-container">
+                      <button class="edit-button">Edit</button>
+                      <button class="remove-button">Remove</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="7"></td>
+                </tr>
+              </tfoot>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
