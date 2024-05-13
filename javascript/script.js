@@ -1,10 +1,24 @@
 var navLinks = document.getElementById("navLinks");
+
 function showMenu() {
   navLinks.style.right = "0";
+  localStorage.setItem("menuStatus", "shown");
 }
+
 function hideMenu() {
   navLinks.style.right = "-200px";
+  localStorage.setItem("menuStatus", "hidden");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  let menuStatus = localStorage.getItem("menuStatus");
+
+  if (menuStatus === "shown") {
+    showMenu();
+  } else {
+    hideMenu();
+  }
+});
 
 // Testimonial
 var btn = document.getElementsByClassName("btn");
@@ -38,3 +52,28 @@ btn[3].onclick = function () {
   }
   this.classList.add("active");
 };
+
+const newSection = document.querySelector(".new-section");
+const overlay = newSection.querySelector(".overlay");
+const showModalBtn = newSection.querySelector(".show-modal");
+const closeBtn = newSection.querySelector(".close-btn");
+
+showModalBtn.addEventListener("click", () => {
+  newSection.classList.add("active");
+  showAlert();
+});
+
+overlay.addEventListener("click", () => newSection.classList.remove("active"));
+
+closeBtn.addEventListener("click", () => newSection.classList.remove("active"));
+function showAlert() {
+  alert("Testing alert");
+
+  let confirmation = confirm("Yakin lu pengen ngelanjutin?");
+
+  if (confirmation) {
+    console.log("Ngoke!");
+  } else {
+    console.log("Aduhhh!");
+  }
+}

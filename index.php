@@ -15,6 +15,10 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
   </head>
   <body>
     <section class="header">
@@ -35,8 +39,22 @@
       <div class="text-box">
         <h1>Solusi Pelanggan Sukses</h1>
         <p>Membantu Anda Menjadi Lebih Baik</p>
-        <a href="" class="hero-btn">Untuk Informasi Lebih Lanjut</a>
+        <div class="new-section" id="modal-section">
+          <button class="show-modal">Untuk Informasi Lebih Lanjut</button>
+          <div class="overlay"></div>
+          <div class="modal-box">
+            <i class="fa-solid fa-info"></i>
+            <h2>Info</h2>
+            <h3>Ini Paundra wleee!</h3>
+
+            <div class="buttons">
+              <button class="close-btn">Ngoke</button>
+              <button>Lanjut</button>
+            </div>
+          </div>
+        </div>
       </div>
+      <!-- Modal Box -->
     </section>
 
     <!-- Testimonials -->
