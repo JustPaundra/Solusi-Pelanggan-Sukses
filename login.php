@@ -1,27 +1,30 @@
 <?php
 session_start();
 
-$expected_username = "paundra";
-$expected_password = "test";
+if (isset($_SESSION["username"])) {
+    header("Location: admin.php");
+    exit;
+}
+
+$users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if ($username === $expected_username && $password === $expected_password) {
+    foreach ($users as $user) {
+        if ($user['username'] === $username && password_verify($password, $user['password'])) {
+            $_SESSION["username"] = $username;
+            
+            setcookie("username", $username, time() + (86400 * 30), "/");
 
-        $_SESSION["username"] = $username;
-        
-        setcookie("username", $username, time() + (86400 * 30), "/"); // Cookie berlaku selama 30 hari
-
-        header("Location: index.php");
-        exit;
-    } else {
-        $login_error = "Username atau password salah. Silakan coba lagi.";
+            header("Location: admin.php");
+            exit;
+        }
     }
-}
 
-$display_username = isset($_POST['username']) ? $_POST['username'] : '';
+    $login_error = "Username atau password salah. Silakan coba lagi.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +66,7 @@ $display_username = isset($_POST['username']) ? $_POST['username'] : '';
     <div class="wrapper">
     <form action="" method="post"> 
     <h1>Login</h1>
+    <?php if (isset($login_error)) echo "<p style='color:red;'>$login_error</p>"; ?>
     <div class="input-box">
         <input type="text" name="username" placeholder="Username" required /> 
         <i class="bx bx-user-circle"></i>
@@ -81,7 +85,7 @@ $display_username = isset($_POST['username']) ? $_POST['username'] : '';
         </div>
         <button type="submit" class="btn">Login</button>
         <div class="register-link">
-          <p>Don't have an account? <a href="register.html">Register</a></p>
+          <p>Don't have an account? <a href="register.php">Register</a></p>
         </div>
       </form>
     </div>

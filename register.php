@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['nama_lengkap'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($password === $confirm_password) {
+        $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
+
+        $users[] = [
+            'username' => $username,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT) 
+        ];
+
+        $_SESSION['users'] = $users;
+
+        header("Location: login.php");
+        exit;
+    } else {
+        $register_error = "Password dan konfirmasi password tidak cocok.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,26 +45,26 @@
   </head>
   <body>
     <div class="wrapper">
-      <form action="">
+    <form action="register.php" method="post">
         <h1>Daftar Akun</h1>
+        <?php if (isset($register_error)) echo "<p style='color:red;'>$register_error</p>"; ?>
         <div class="input-box">
           <div class="input-field">
-            <input type="text" placeholder="Nama Lengkap" required />
+            <input type="text" name="nama_lengkap"  placeholder="Nama Lengkap" required />
             <i class="bx bx-user-circle"></i>
           </div>
           <div class="input-field">
-            <input type="email" placeholder="Email" required />
+            <input type="email" name="email" placeholder="Email" required />
             <i class="bx bxl-gmail"></i>
           </div>
         </div>
-
         <div class="input-box">
           <div class="input-field">
-            <input type="password" placeholder="Password" required />
+            <input type="password" name="password" placeholder="Password" required />
             <i class="bx bx-lock"></i>
           </div>
           <div class="input-field">
-            <input type="password" placeholder="Confirm Password" required />
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required />
             <i class="bx bx-lock"></i>
           </div>
         </div>

@@ -20,25 +20,25 @@
         <div class="logo"></div>
         <ul class="menu">
           <li >
-            <a href="admin.html">
+            <a href="admin.php">
               <i class="bx bxs-dashboard"></i>
               <span>Dashboard</span>
             </a>
           </li>
           <li class="active">
-            <a href="tiket/tiket.html">
+            <a href="tiket.php">
               <i class='bx bxs-calendar-plus'></i>
               <span>Manajemen Tiket</span>
             </a>
           </li>
           <li>
-            <a href="analisa/input.html">
+            <a href="../analisa/input.php">
               <i class='bx bx-archive-in' ></i>
               <span>Input Data</span>
             </a>
           </li>
           <li>
-            <a href="analisa/analisa.html">
+            <a href="../analisa/analisa.php">
               <i class='bx bx-bar-chart-square'></i>
               <span>Analisis</span>
             </a>

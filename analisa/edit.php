@@ -13,42 +13,34 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pemesan = isset($_POST['pemesan']) ? $_POST['pemesan'] : '';
-    $sektor = isset($_POST['sektor']) ? $_POST['sektor'] : '';
-    $skor_kepuasan = isset($_POST['skor_kepuasan']) ? (int)$_POST['skor_kepuasan'] : 0;
-    $skor_customer_effort = isset($_POST['skor_customer_effort']) ? (int)$_POST['skor_customer_effort'] : 0;
+$id_tiket = isset($_GET['id_tiket']) ? $_GET['id_tiket'] : '';
 
-    // Check if file is uploaded
-    if(isset($_FILES['foto_bukti']) && $_FILES['foto_bukti']['error'] === UPLOAD_ERR_OK) {
-        $foto_bukti = $_FILES['foto_bukti']['name']; // Get the file name
-        $foto_bukti_tmp = $_FILES['foto_bukti']['tmp_name']; // Get the temporary file path
-        
-        // Move the file to the desired location
-        $upload_directory = "../uploads/";
-        if(move_uploaded_file($foto_bukti_tmp, $upload_directory.$foto_bukti)) {
-            echo "File uploaded successfully.";
-        } else {
-            echo "Failed to upload file.";
-        }
+if ($id_tiket) {
+    // Mendapatkan data yang akan diedit
+    $sql = "SELECT * FROM analisa_kepuasan WHERE id_tiket = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id_tiket);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $pemesan = $row['pemesan'];
+        $sektor = $row['sektor'];
+        $skor_kepuasan = $row['skor_kepuasan'];
+        $skor_customer_effort = $row['skor_customer_effort'];
+        $foto_bukti = $row['foto_bukti'];
     } else {
-        // No file uploaded or an error occurred
-        $foto_bukti = null;
-    }
-
-    // Insert data into database
-    $sql = "INSERT INTO analisa_kepuasan (pemesan, sektor, skor_kepuasan, skor_customer_effort, foto_bukti) VALUES ('$pemesan', '$sektor', $skor_kepuasan, $skor_customer_effort, '$foto_bukti')";
-    if ($conn->query($sql) === TRUE) {
-        header("Location: analisa.php"); // Redirect to keluhan.php after successfully saving data
+        echo "Data tidak ditemukan!";
         exit;
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
     }
+} else {
+    echo "ID Tiket tidak ditemukan!";
+    exit;
 }
 
 $conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -56,7 +48,7 @@ $conn->close();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Input Data</title>
+    <title>Edit Data</title>
     <link rel="stylesheet" href="../style/admin.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -100,7 +92,7 @@ $conn->close();
     <div class="main-content">
         <div class="header-wrapper">
             <div class="header-title">
-                <span>Input Data</span>
+                <span>Edit Data</span>
                 <span>Dashboard</span>
             </div>
             <div class="user-info">
@@ -112,31 +104,32 @@ $conn->close();
             </div>
         </div>
         <div class="tabel-wrapper">
-            <h3 class="main-title">Input Data</h3>
+            <h3 class="main-title">Edit Data</h3>
             <div class="form-wrapper">
-                <form action="input.php" method="post" enctype="multipart/form-data">
+                <form action="update.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id_tiket" value="<?php echo $id_tiket; ?>" />
                     <div class="form-group">
                         <label for="pemesan">Pemesan</label>
-                        <input type="text" id="pemesan" name="pemesan" />
+                        <input type="text" id="pemesan" name="pemesan" value="<?php echo $pemesan; ?>" />
                     </div>
                     <div class="form-group">
                         <label for="sektor">Sektor</label>
-                        <input type="text" id="sektor" name="sektor" />
+                        <input type="text" id="sektor" name="sektor" value="<?php echo $sektor; ?>" />
                     </div>
                     <div class="form-group">
                         <label for="skor_kepuasan">Skor Kepuasan</label>
-                        <input type="text" id="skor_kepuasan" name="skor_kepuasan" />
+                        <input type="text" id="skor_kepuasan" name="skor_kepuasan" value="<?php echo $skor_kepuasan; ?>" />
                     </div>
                     <div class="form-group">
                         <label for="skor_customer_effort">Skor Customer Effort</label>
-                        <input type="text" id="skor_customer_effort" name="skor_customer_effort" />
+                        <input type="text" id="skor_customer_effort" name="skor_customer_effort" value="<?php echo $skor_customer_effort; ?>" />
                     </div>
                     <div class="form-group">
                         <label for="foto_bukti">Foto Dokumen</label>
                         <input type="file" id="foto_bukti" name="foto_bukti">
                     </div>
                     <div class="button-container">
-                        <button type="submit" class="move-button">Submit</button>
+                        <button type="submit" class="move-button">Update</button>
                     </div>
                 </form>
             </div>
@@ -144,4 +137,3 @@ $conn->close();
     </div>
 </body>
 </html>
-
