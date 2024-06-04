@@ -279,11 +279,11 @@ p {
   padding: 18px 0;
 }
 
-/** Popup box **/
+/** Popup Box **/
 .new-section {
   position: relative;
   text-align: center;
-  margin-top: 10px; /* Sesuaikan dengan kebutuhan */
+  margin-top: 50px; /* Sesuaikan dengan kebutuhan */
 }
 
 .new-section .show-modal {
@@ -292,14 +292,13 @@ p {
   color: #fff;
   padding: 14px 22px;
   border: none;
-  background: #222831;
+  background: #4070f4;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 5px; /* Menambahkan margin di atas tombol */
 }
 
 .new-section .show-modal:hover {
-  background-color: #31363f;
+  background-color: #265df2;
 }
 
 .new-section .modal-box {
@@ -326,9 +325,23 @@ p {
   transform: translate(-50%, -50%) scale(1); /* Akhirnya diperkecil */
 }
 
-.new-section .modal-box i {
+.new-section .modal-box .modal-header i {
   font-size: 70px;
-  color: #222831;
+  color: #4070f4;
+  transition: color 0.3s ease, transform 0.3s ease; /* Tambahkan transisi untuk hover */
+}
+
+.new-section .modal-box .modal-header i:hover {
+  color: #ff204e; /* Ganti warna saat hover */
+  transform: scale(1.1); /* Besarkan sedikit saat hover */
+}
+
+.new-section .modal-box .form-group .pemesan,
+.new-section .modal-box .form-group .deskripsi {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .new-section .modal-box h2 {
@@ -345,28 +358,32 @@ p {
   text-align: center;
 }
 
-.new-section .modal-box .buttons {
+.new-section .modal-box .modal-footer {
   margin-top: 25px;
 }
 
-.new-section .modal-box button {
+.new-section .modal-box .modal-footer button {
   font-size: 14px;
   padding: 6px 12px;
   margin: 0 10px;
 }
 
-.new-section .buttons button {
+.new-section .modal-footer button {
   font-size: 18px;
   font-weight: 400;
   color: #fff;
   padding: 14px 22px;
   border: none;
-  background: #222831;
+  background: #4070f4;
   border-radius: 6px;
   cursor: pointer;
   margin-top: 15px;
 }
 
 .new-section .buttons button:hover {
-  background-color: #31363f;
+  background-color: #265df2;
+}
+
+.hidden {
+  display: none;
 }

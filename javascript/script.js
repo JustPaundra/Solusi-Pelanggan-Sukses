@@ -1,3 +1,4 @@
+// Navigation Menu
 var navLinks = document.getElementById("navLinks");
 
 function showMenu() {
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Testimonial
+// Testimonial Slider
 var btn = document.getElementsByClassName("btn");
 var slide = document.getElementById("slide");
 
@@ -53,19 +54,35 @@ btn[3].onclick = function () {
   this.classList.add("active");
 };
 
+// Modal Section
 const newSection = document.querySelector(".new-section");
 const overlay = newSection.querySelector(".overlay");
-const showModalBtn = newSection.querySelector(".show-modal");
+const showModalBtn = document.querySelector(".show-modal");
 const closeBtn = newSection.querySelector(".close-btn");
+const contactUsBtn = document.querySelector(".hero-btn"); // Select the CONTACT US button
 
 showModalBtn.addEventListener("click", () => {
   newSection.classList.add("active");
+  overlay.classList.add("active");
+  showModalBtn.classList.add("hidden"); // Hide the show modal button
+  contactUsBtn.classList.add("hidden"); // Hide the CONTACT US button
   showAlert();
 });
 
-overlay.addEventListener("click", () => newSection.classList.remove("active"));
+overlay.addEventListener("click", () => {
+  newSection.classList.remove("active");
+  overlay.classList.remove("active");
+  showModalBtn.classList.remove("hidden"); // Show the show modal button
+  contactUsBtn.classList.remove("hidden"); // Show the CONTACT US button
+});
 
-closeBtn.addEventListener("click", () => newSection.classList.remove("active"));
+closeBtn.addEventListener("click", () => {
+  newSection.classList.remove("active");
+  overlay.classList.remove("active");
+  showModalBtn.classList.remove("hidden"); // Show the show modal button
+  contactUsBtn.classList.remove("hidden"); // Show the CONTACT US button
+});
+
 function showAlert() {
   alert("Testing alert");
 

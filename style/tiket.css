@@ -140,7 +140,6 @@ body {
   transform: scale(1.2);
 }
 
-
 .main-title {
   margin-bottom: 8px;
 }
@@ -197,65 +196,64 @@ tfoot td {
 }
 
 .edit-button {
-  background-color: #4caf50; 
-  color: white; 
+  background-color: #4caf50;
+  color: white;
   border: none;
   border-radius: 4px;
-  padding: 8px 12px; 
-  font-size: 14px; 
+  padding: 8px 12px;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .edit-button:hover {
-  background-color: #45a049; 
+  background-color: #45a049;
 }
 
 .remove-button {
-  background-color: #f44336; 
-  color: white; 
+  background-color: #f44336;
+  color: white;
   border: none;
   border-radius: 4px;
-  padding: 8px 12px; 
-  font-size: 14px; 
+  padding: 8px 12px;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .remove-button:hover {
-  background-color: #f44336; 
+  background-color: #f44336;
 }
 .button-container {
   display: flex;
-  align-items: center; 
-  gap: 10px; 
+  align-items: center;
+  gap: 10px;
 }
 
 .move-button {
-  background-color: #3366ff; 
-  color: white; 
+  background-color: #3366ff;
+  color: white;
   border: none;
   border-radius: 4px;
-  padding: 8px 10px; 
+  padding: 8px 10px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
-  margin-bottom: 14px; 
+  transition: background-color 0.3s ease;
+  margin-bottom: 14px;
   margin-top: 8px;
 }
 
 .move-button:hover {
-  background-color: #2554b3; 
+  background-color: #2554b3;
 }
 
 @media screen and (max-width: 600px) {
   .button-container {
-    flex-direction: column; 
-    width: 100%; 
-    align-items: flex-start; 
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
   }
 }
-
 
 .form-group {
   margin-bottom: 20px;
@@ -271,12 +269,12 @@ textarea {
   padding: 10px;
   border-radius: 5px;
   border: 1px;
-  solid #ccc;
-font-size: 16px;
+  solid: #ccc;
+  font-size: 16px;
 }
 
 textarea {
-resize: vertical;
+  resize: vertical;
 }
 
 .status {
@@ -286,30 +284,30 @@ resize: vertical;
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .status-complete {
-  background-color: #4caf50; 
+  background-color: #4caf50;
   color: white;
 }
 
 .status-pending {
-  background-color: #ff9800; 
+  background-color: #ff9800;
   color: white;
 }
 
 .status-processing {
-  background-color: #2196f3; 
+  background-color: #2196f3;
   color: white;
 }
 
 .status-rejected {
-  background-color: #f44336; 
+  background-color: #f44336;
   color: white;
 }
 
 .status:hover {
-  opacity: 0.8; 
+  opacity: 0.8;
 }

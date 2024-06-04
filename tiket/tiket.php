@@ -1,145 +1,133 @@
+<?php
+// Koneksi ke database
+$servername = "localhost";
+$username = "root"; // Sesuaikan dengan username database Anda
+$password = ""; // Sesuaikan dengan password database Anda
+$dbname = "spk";
+
+// Membuat koneksi
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Cek koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Query untuk mengambil data tiket
+$sql = "SELECT * FROM tiket";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tiket</title>
-    <link rel="stylesheet" href="../style/tiket.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <title>Manajemen Tiket</title>
+    <link rel="stylesheet" href="../style/admin.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+<body>
     <div class="sidebar">
         <div class="logo"></div>
         <ul class="menu">
-          <li >
-            <a href="admin.php">
-              <i class="bx bxs-dashboard"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li class="active">
-            <a href="tiket.php">
-              <i class='bx bxs-calendar-plus'></i>
-              <span>Manajemen Tiket</span>
-            </a>
-          </li>
-          <li>
-            <a href="../analisa/input.php">
-              <i class='bx bx-archive-in' ></i>
-              <span>Input Data</span>
-            </a>
-          </li>
-          <li>
-            <a href="../analisa/analisa.php">
-              <i class='bx bx-bar-chart-square'></i>
-              <span>Analisis</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bx bxs-log-out"></i>
-              <span>Logout</span>
-            </a>
-          </li>
+            <li>
+                <a href="admin.php">
+                    <i class="bx bxs-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="tiket.php">
+                    <i class="bx bxs-calendar-plus"></i>
+                    <span>Manajemen Tiket</span>
+                </a>
+            </li>
+            <li>
+                <a href="../analisa/input.php">
+                    <i class="bx bx-archive-in"></i>
+                    <span>Input Data</span>
+                </a>
+            </li>
+            <li>
+                <a href="../analisa/analisa.php">
+                    <i class="bx bx-bar-chart-square"></i>
+                    <span>Analisis</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
-      </div>
-    <div class="main-content">
-      <div class="header-wrapper">
-        <div class="header-title">
-          <span>Ticket Management</span>
-          <span>Dashboard</span>
-        </div>
-        <div class="user-info">
-          <div class="search">
-            <i class="bx bx-search-alt"></i>
-            <input type="text" placeholder="Search" />
-          </div>
-          <img src="../image/rating.png" alt="" />
-        </div>
-      </div>
-      
-      
-      <div class="tabel-wrapper">
-        <h3 class="main-title">Manajemen Tiket</h3>
-        <div class="tabel-container">
-          <table>
-            <thead>
-              <tr>
-                <th>ID Tiket</th>
-                <th>Pemesan</th>
-                <th>Sektor</th>
-                <th>Tanggal Berangkat</th>
-                <th>Status</th>
-                <th>Opsi</th>
-                <th>Waktu Transaksi</th>
-              </tr>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Lorem, ipsum.</td>
-                  <td>Lorem, ipsum.</td>
-                  <td>22/08/24</td>                
-                  <td>
-                    <span class="status status-complete">Complete</span>
-                  </td>
-                  <td>
-                    <div class="button-container">
-                      <button class="edit-button">Edit</button>
-                      <button class="remove-button">Remove</button>
-                    </div>
-                    <td>22/12/24</td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Lorem, ipsum.</td>
-                  <td>Lorem, ipsum.</td>
-                  <td>22/08/24</td>                
-                  <td>
-                    <span class="status status-pending">Pending</span>
-                  </td>
-                  <td>
-                    <div class="button-container">
-                      <button class="edit-button">Edit</button>
-                      <button class="remove-button">Remove</button>
-                    </div>
-                    <td>22/12/24</td>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Lorem, ipsum.</td>
-                  <td>Lorem, ipsum.</td>
-                  <td>22/08/24</td>                
-                  <td>
-                    <span class="status status-pending">Pending</span>
-                  </td>
-                  <td>
-                    <div class="button-container">
-                      <button class="edit-button">Edit</button>
-                      <button class="remove-button">Remove</button>
-                    </div>
-                    <td>22/12/24</td>
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="8"></td>
-                </tr>
-              </tfoot>
-            </thead>
-          </table>
-        </div>
-      </div>
     </div>
-  </body>
+    <div class="main-content">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span>Manajemen Tiket</span>
+                <span>Dashboard</span>
+            </div>
+            <div class="user-info">
+                <div class="search">
+                    <i class="bx bx-search-alt"></i>
+                    <input type="text" placeholder="Search" />
+                </div>
+                <img src="../image/ticket.png" alt="" />
+            </div>
+        </div>
+        <div class="tabel-wrapper">
+            <h3 class="main-title">Daftar Tiket</h3>
+            <div class="button-container">
+                <button class="move-button" onclick="window.location.href='input.php'">Input Data</button>
+                <button class="move-button" onclick="window.location.href='print_tiket.php'">Print</button>
+            </div>
+            <div class="tabel-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Tiket</th>
+                            <th>Pemesan</th>
+                            <th>Sektor</th>
+                            <th>Tanggal Berangkat</th>
+                            <th>Waktu Transaksi</th>
+                            <th>Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if ($result->num_rows > 0): ?>
+                            <?php while($row = $result->fetch_assoc()): ?>
+                                <tr>
+                                    <td><?php echo $row["id_tiket"]; ?></td>
+                                    <td><?php echo $row["pemesanan"]; ?></td>
+                                    <td><?php echo $row["sector"]; ?></td>
+                                    <td><?php echo $row["tgl_berangkat"]; ?></td>
+                                    <td><?php echo $row["waktu_transaksi"]; ?></td>
+                                    <td>
+                                        <div class="button-container">
+                                            <a href="edit.php?id=<?php echo $row["id_tiket"]; ?>" class="edit-button">Edit</a>
+                                            <a href="remove.php?id=<?php echo $row['id_tiket']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');" class="remove-button">Hapus</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr>
+                                    <td colspan="6">Tidak ada data</td>
+                                </tr>
+                            <?php endif; ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">Total Tiket: <?php echo $result->num_rows; ?></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root"; // Sesuaikan dengan username database Anda
 $password = ""; // Sesuaikan dengan password database Anda
-$dbname = "paundra";
+$dbname = "spk";
 
 // Membuat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -82,6 +82,7 @@ $result = $conn->query($sql);
             <h3 class="main-title">Analisa Kepuasan</h3>
             <div class="button-container">
                 <button class="move-button" onclick="window.location.href='input.php'">Input Data</button>
+                <button class="move-button" onclick="window.location.href='print_analisa.php'">Print</button>
             </div>
             <div class="tabel-container">
                 <table>

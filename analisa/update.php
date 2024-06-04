@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root"; // Sesuaikan dengan username database Anda
 $password = ""; // Sesuaikan dengan password database Anda
-$dbname = "paundra";
+$dbname = "spk";
 
 // Membuat koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
